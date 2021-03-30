@@ -1,0 +1,17 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Regression test" verbose="1">
+    <parameter name="app_url" value=""/>
+    <parameter name="app_args" value=""/>
+    <parameter name="run_type" value="r"/>
+
+    <listeners>
+        <listener class-name="core.utils.Listener"/>
+    </listeners>
+
+    <test name="test 1">
+        <classes>
+            <class name="RegressionTest" />
+        </classes>
+    </test>
+</suite>
