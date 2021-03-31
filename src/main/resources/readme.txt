@@ -3,6 +3,7 @@ Test kind: Suite
 Suite: C:/Users/abmet/Desktop/AppiumCucumberTestProject/src/test/resources/testng.xml
 VM options: -ea -Dtestng.dtd.http=true
 
+
 run with maven:
 mvn test -Dapp_url=bs://662ea709aaa1b94e31b7e7c704a941aa9bd5ecfa -Dapp_args=com.tradeatf.global,GlobalTradeATF
 mvn test -Dapp_url=bs://b7fdbf6071143c112f08b4b9711d57dacd2009b1 -Dapp_args=com.roinvesting,ROInvesting
