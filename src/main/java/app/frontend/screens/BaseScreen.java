@@ -2,6 +2,8 @@ package app.frontend.screens;
 
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,6 +15,7 @@ public abstract class BaseScreen {
 
     protected IOSDriver<IOSElement > driver;
     protected WebDriverWait driverWait;
+    protected Logger logger = LogManager.getLogger(BaseScreen.class);
 
     public BaseScreen(IOSDriver<IOSElement > driver) {
         this.driver = driver;
@@ -127,6 +130,13 @@ public abstract class BaseScreen {
     public void scrollToElementInDataPicker_iOS_XCTest(String text){
         driver.findElementByClassName("XCUIElementTypePickerWheel")
                 .sendKeys(text);
+    }
+
+    public void swipeToElement_iOS_XCTest(IOSElement element){
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        Map<String, Object> scrollObject = new HashMap<>();
+        scrollObject.put("element", element.getId());
+        js.executeScript("mobile: scroll", scrollObject);
     }
 
     public void touchAndHold(IOSElement element){

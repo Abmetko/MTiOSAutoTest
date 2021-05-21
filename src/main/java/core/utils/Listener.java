@@ -50,7 +50,7 @@ public class Listener implements ITestListener {
         if (null != Result.getThrowable()) {
             errorTrace = Result.getThrowable().getMessage();
         }
-        if(!DriverFactory.RUN_TYPE.equals("l")){
+        if(!DriverFactory.run_type.equals("l")){
             JavascriptExecutor jse = (JavascriptExecutor)DriverFactory.getDriver();
             jse.executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\":\"failed\", \"reason\": \"Test FAILED: " + errorTrace + "\"}}");
             SESSION_STATUS = "FAILED";
@@ -69,7 +69,7 @@ public class Listener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult Result) {
-        if(SESSION_STATUS.equals("UNMARKED")&!DriverFactory.RUN_TYPE.equals("l")){
+        if(SESSION_STATUS.equals("UNMARKED")&!DriverFactory.run_type.equals("l")){
             JavascriptExecutor jse = (JavascriptExecutor)DriverFactory.getDriver();
             jse.executeScript("browserstack_executor: {\"action\": \"setSessionStatus\", \"arguments\": {\"status\": \"passed\", \"reason\": \"Test PASSED\"}}");
             SESSION_STATUS = "PASSED";

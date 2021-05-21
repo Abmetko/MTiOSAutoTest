@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import static core.utils.PropertyLoader.getProperty;
+import static core.mt.utils.PropertyLoader.getProperty;
 import static org.testng.AssertJUnit.assertTrue;
 
 
@@ -152,7 +152,7 @@ public class MainScreen extends BaseScreen {
     public boolean tapExistedOrderInPortfolio(String text) {
         driver.manage().timeouts().implicitlyWait(1000, TimeUnit.MILLISECONDS);
         for (int i = 1; i < 5; i++) {
-            System.out.println("[DEBUG] Attempt to tap on the order in Portfolio - " + i + " time");
+            logger.debug("Attempt to tap on the order in Portfolio - " + i + " time");
             assertTrue(tapEnabledElement(text));
             try {
                 Thread.sleep(200);
@@ -164,17 +164,17 @@ public class MainScreen extends BaseScreen {
                 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                 return true;
             } catch (NoSuchElementException e) {
-                System.out.println("[WARNING] Try again...");
+                logger.debug("Try again...");
             }
         }
-        System.out.println("[ERROR] Order is not extended...");
+        logger.debug("ERROR: Order is not extended...");
         return false;
     }
 
     public void tapClosePositionInOrderDialog() {
         driver.manage().timeouts().implicitlyWait(1000, TimeUnit.MILLISECONDS);
         for (int i = 1; i < 5; i++) {
-            System.out.println("[DEBUG] Attempt to tap on CLOSE POSITION - " + i + " time");
+            logger.debug("Attempt to tap on CLOSE POSITION - " + i + " time");
             CLOSE_POSITION.click();
             try {
                 Thread.sleep(200);
@@ -183,13 +183,13 @@ public class MainScreen extends BaseScreen {
             }
             try {
                 driver.findElementByAccessibilityId("cancel_button");
-                System.out.println("[WARNING] Try again...");
+                logger.debug("Try again...");
             } catch (NoSuchElementException e) {
                 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
                 return;
             }
         }
-        System.out.println("[ERROR] Order is not closed...");
+        logger.debug("ERROR: Order is not closed...");
     }
 
     public boolean isOpenPriceValidInOrderDialog(String value) {

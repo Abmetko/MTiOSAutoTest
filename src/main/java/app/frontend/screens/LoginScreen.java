@@ -9,7 +9,9 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import static core.utils.PropertyLoader.getProperty;
+import java.util.Arrays;
+import static core.mt.ProjectPackages.*;
+import static core.mt.utils.PropertyLoader.getProperty;
 
 
 public class LoginScreen extends BaseScreen {
@@ -53,20 +55,20 @@ public class LoginScreen extends BaseScreen {
 
     public boolean makeLogin(){
         try{
-            String packageName = DriverFactory.APP_ARGS.split(",")[0];
+            String packageName = DriverFactory.package_name;
             String userEmail = getProperty("user.email");
             String userPassword = getProperty("user.password");
-            if(packageName.equals("au.com.hftrading")){
+            if(HFT_TRADING_AU.getValueAsList().contains(packageName)){
                 userPassword = getProperty("user.password.hft");
             }
-            else if(packageName.equals("com.hftrading")){
+            else if(HFT_TRADING.getValueAsList().contains(packageName)){
                 userEmail = getProperty("user.email.hft");
                 userPassword = getProperty("user.password.hft");
             }
             waitClickEnterDataInField(waitGetClickableElement(Email), userEmail);
-            System.out.println("[DEBUG] Input email: " + userEmail);
+            logger.debug("Input email: " + userEmail);
             waitClickEnterDataInField(waitGetClickableElement(Password), userPassword);
-            System.out.println("[DEBUG] Input password: " + userPassword);
+            logger.debug("Input password: " + userPassword);
             waitGetClickableElement(Login).click();
             return true;
         }catch (WebDriverException e){

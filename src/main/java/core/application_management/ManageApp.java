@@ -1,56 +1,34 @@
 package core.application_management;
 
-import app.frontend.screens.BaseScreen;
-import app.frontend.screens.LoginScreen;
-import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSElement;
-import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
 import java.time.Duration;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import static core.utils.PropertyLoader.getProperty;
-import static org.testng.AssertJUnit.assertTrue;
+import static core.mt.utils.PropertyLoader.getProperty;
 
 
 public class ManageApp {
 
-    private IOSDriver<IOSElement> driver;
-
-    public ManageApp(IOSDriver<IOSElement> driver){
-        this.driver = driver;
-    }
-
-    public void resetApp(){
+    public static void resetApp(AppiumDriver<IOSElement> driver){
         driver.resetApp();
     }
 
-    public void closeApp(){
+    public static void closeApp(AppiumDriver<IOSElement> driver){
         driver.closeApp();
     }
 
-    public void launchApp(){
+    public static void launchApp(AppiumDriver<IOSElement> driver){
         driver.launchApp();
     }
 
-    public void driverQuit(){
+    public static void driverQuit(AppiumDriver<IOSElement> driver){
         driver.quit();
     }
 
-    public void removeApp(){
+    public static void removeApp(AppiumDriver<IOSElement> driver){
         driver.removeApp(getProperty("app.package"));
     }
 
-    public void runAppInBackgroundAndRelaunch(){
+    public static void runAppInBackgroundAndRelaunch(AppiumDriver<IOSElement> driver){
         driver.runAppInBackground(Duration.ofSeconds(1));
     }
-
 }

@@ -3,13 +3,12 @@ Test kind: Suite
 Suite: C:/Users/abmet/Desktop/AppiumCucumberTestProject/src/test/resources/testng.xml
 VM options: -ea -Dtestng.dtd.http=true
 
-
 run with maven:
 mvn test -Dapp_url=bs://662ea709aaa1b94e31b7e7c704a941aa9bd5ecfa -Dapp_args=com.tradeatf.global,GlobalTradeATF
-mvn test -Dapp_url=bs://b7fdbf6071143c112f08b4b9711d57dacd2009b1 -Dapp_args=com.roinvesting,ROInvesting
-mvn test -Dapp_url=bs://213dba86664108aa0fc41d8fd9de4531cc5991cc -Dapp_args=com.101investing,101investing
+mvn test -Dapp_url=bs://6221b869febec8042c2110ecf07469384d6a229e -Dapp_args=com.roinvesting,ROInvesting
+mvn test -Dapp_url=bs://bd82c24a1b19d09367f5783c90932e43cafce56f -Dapp_args=com.101investing,101investing
 mvn test -Dapp_url=bs://bcc769b96c7b359bdda0be096f08dce26d42c31a -Dapp_args=com.etfinance,ETFinance
-mvn test -Dapp_url=bs://14bc47124fa5751fa9758cca0266f5e925f84f28 -Dapp_args=au.com.hftrading,HFTrading.com
+mvn test -Dapp_url=bs://32a0d3b6424be54103775ebf217f26a408481444 -Dapp_args=au.com.hftrading,HFTrading.com
 mvn test -Dapp_url=bs://47567cef121fc64976d1d4f5c513c29e50260551 -Dapp_args=com.gcb.T1,T1
 mvn test -Dapp_url=bs://b47756c6343943649dd1f3cf62dc5cf27ea626d8 -Dapp_args=com.tradedwell,TradedWell
 
